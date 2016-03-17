@@ -1,0 +1,12 @@
+{
+  "name": "jaskolek/bot",
+  "description": "simple bot for sending and parsing multiple request",
+  "minimum-stability": "dev",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "jaskolek",
+      "email": "jaskolek@gmail.com"
+    }
+  ]
+}
