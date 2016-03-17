@@ -206,7 +206,7 @@ class Bot
                 }
                 $recordList += $cachedData;
             } else {
-//                $requestList[] = $requestData;
+                $requestList[] = $requestData;
             }
         }
 
