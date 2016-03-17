@@ -8,5 +8,15 @@
       "name": "jaskolek",
       "email": "jaskolek@gmail.com"
     }
-  ]
+  ],
+  "autoload": {
+    "psr-4": {
+      "Jaskolek\\": "src"
+    }
+  },
+  "require": {
+    "guzzlehttp/guzzle": "6.1.1",
+    "monolog/monolog": "^1.18",
+    "symfony/dom-crawler": "^3.0"
+  }
 }
