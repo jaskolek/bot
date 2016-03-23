@@ -228,17 +228,17 @@ class Bot
                             $this->_logger->addInfo("Proxy: " . $requestData["proxy"] . ". Fetched " . count($newRecordList) . " from SITE. Url: " . $requestData["request"]->getUri());
                             $recordList = array_merge($recordList, $newRecordList);
                         } catch (\Exception $e) {
-                            $this->_logger->addWarning("Proxy: " . $requestData["proxy"] . ". " . $requestData["request"]->getUri() . ". Error - can not parse!! " . $e->getMessage() . " - " . $e->getFile() . " - " . $e->getLine() );
+                            $this->_logger->addWarning("Proxy: " . $requestData["proxy"] . ". " . $requestData["request"]->getUri() . ". Error - can not parse!! " . $e->getMessage() . " - " . $e->getTraceAsString());
                         }
                     },
                     function (\Exception $exception) use ($requestData) {
                         $this->_proxyRotator->blockProxy($requestData["proxy"]);
-                        $this->_logger->addWarning("Proxy: " . $requestData["proxy"] . ". " . $requestData["request"]->getUri() . ". Error! " . $exception->getMessage() . " - " . $exception->getFile() . " - " . $exception->getLine() );
+                        $this->_logger->addWarning("Proxy: " . $requestData["proxy"] . ". " . $requestData["request"]->getUri() . ". Error! " . $exception->getMessage() . " - " . $exception->getTraceAsString());
                     });
 
             } catch (\Exception $e) {
                 $this->_proxyRotator->blockProxy($requestData["proxy"]);
-                $this->_logger->addWarning("Proxy: " . $requestData["proxy"] . ". " . $requestData["request"]->getUri() . ". Error! " . $e->getMessage() . " - " . $e->getFile() . " - " . $e->getLine() );
+                $this->_logger->addWarning("Proxy: " . $requestData["proxy"] . ". " . $requestData["request"]->getUri() . ". Error! " . $e->getMessage() . " - " . $e->getTraceAsString());
 
             }
             if (count($promiseList) > $this->_poolSize) {
