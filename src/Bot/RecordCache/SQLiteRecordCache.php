@@ -45,18 +45,18 @@ class SQLiteRecordCache implements RecordCacheInterface
         $stmt->bindValue("key", $key);
         $stmt->execute();
 
-        $jsonData = $stmt->fetchColumn();
-        return json_decode($jsonData, true);
+        $serializedData = $stmt->fetchColumn();
+        return unserialize($serializedData);
     }
 
     public function set($request, $data)
     {
         $key = $this->getRequestKey($request);
-        $jsonData = json_encode($data);
+        $serializedData = serialize($data);
 
         $stmt = $this->_pdo->prepare("INSERT INTO " . $this->getTableName() . "(key, data) VALUES(:key, :data)");
         $stmt->bindValue("key", $key);
-        $stmt->bindValue("data", $jsonData);
+        $stmt->bindValue("data", $serializedData);
         $stmt->execute();
     }
 
